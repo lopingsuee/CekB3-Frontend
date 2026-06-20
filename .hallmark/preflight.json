@@ -1,0 +1,11 @@
+{
+  "scanned_at": "2026-06-20",
+  "project_folder": "frontend",
+  "font_stack": "No existing frontend font stack; introducing Bricolage Grotesque, IBM Plex Sans, and JetBrains Mono through next/font.",
+  "palette": "No existing frontend palette; introducing tokenized eco-tech OKLCH palette based on the CEK-B3 green brand brief.",
+  "motion": "No existing frontend motion layer; introducing framer-motion and react-intersection-observer for restrained reveal and state motion.",
+  "spacing": "No existing spacing scale; introducing 4px-based CSS custom properties and Tailwind utilities.",
+  "framework": "No existing app source in frontend; introducing Next.js App Router, TypeScript, and Tailwind CSS.",
+  "preserve": ["frontend/.agents/skills/hallmark anti-slop guidance", "backend FastAPI response contract"],
+  "introduce": ["Workbench macrostructure", "N5 floating pill navigation", "Ft5 statement footer"]
+}
