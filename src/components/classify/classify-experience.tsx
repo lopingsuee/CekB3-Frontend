@@ -14,6 +14,7 @@ import { DatasetInput } from "./dataset-input";
 import { PredictionResult } from "./prediction-result";
 import { PredictionHistory } from "./prediction-history";
 import { CheckCircle2 } from "lucide-react";
+import { Reveal } from "@/components/reveal";
 
 const maxUploadMb = 10;
 const maxUploadBytes = maxUploadMb * 1024 * 1024;
@@ -201,21 +202,24 @@ export function ClassifyExperience() {
   return (
     <main className="px-4 pb-16 pt-10 md:px-6 md:pb-24" aria-labelledby="classify-title">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-end mb-10">
-          <div>
-            <p className="kicker">Klasifikasi Cerdas</p>
-            <h1 id="classify-title" className="type-display mt-4 text-[var(--text-display-sm)] font-black">
-              Identifikasi Limbah B3 Rumah Tangga
-            </h1>
+        <Reveal>
+          <div className="grid gap-4 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-end mb-10">
+            <div>
+              <p className="kicker">Klasifikasi Cerdas</p>
+              <h1 id="classify-title" className="type-display mt-4 text-[var(--text-display-sm)] font-black">
+                Identifikasi Limbah B3 Rumah Tangga
+              </h1>
+            </div>
+            <p className="max-w-[68ch] text-[var(--color-ink-soft)] lg:justify-self-end text-lg leading-relaxed">
+              Ambil foto atau unggah gambar limbah B3. Sistem akan memproses gambar menggunakan MobileViT, 
+              menampilkan visualisasi Grad-CAM, serta panduan penanganan limbah sesuai regulasi.
+            </p>
           </div>
-          <p className="max-w-[68ch] text-[var(--color-ink-soft)] lg:justify-self-end text-lg leading-relaxed">
-            Ambil foto atau unggah gambar limbah B3. Sistem akan memproses gambar menggunakan MobileViT, 
-            menampilkan visualisasi Grad-CAM, serta panduan penanganan limbah sesuai regulasi.
-          </p>
-        </div>
+        </Reveal>
 
-        <div className="grid gap-8 max-w-4xl mx-auto w-full items-start">
-          {/* Input Panel */}
+        <Reveal delay={0.1}>
+          <div className="grid gap-8 max-w-4xl mx-auto w-full items-start">
+            {/* Input Panel */}
           <section className="grid gap-6" aria-label="Input Gambar">
             <div className="surface p-4">
               {/* Tabs */}
@@ -484,9 +488,12 @@ export function ClassifyExperience() {
             </AnimatePresence>
           </section>
         </div>
+        </Reveal>
 
         {/* Prediction History Component */}
-        <PredictionHistory />
+        <Reveal delay={0.2}>
+          <PredictionHistory />
+        </Reveal>
 
       </div>
 

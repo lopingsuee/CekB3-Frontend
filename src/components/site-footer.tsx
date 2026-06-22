@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 const navItems = [
   { name: "Beranda", href: "/" },
   { name: "Klasifikasi", href: "/classify" },
+  { name: "Tutorial", href: "/tutorial" },
   { name: "Tentang", href: "/about" },
 ];
 

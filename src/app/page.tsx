@@ -1,32 +1,12 @@
 import { AlertTriangle, ArrowRight, CheckCircle2, FileImage, Microscope, ShieldCheck, Sprout, UploadCloud } from "lucide-react";
 import { CategoryCarousel } from "@/components/category-carousel";
-import { GradCamDemo } from "@/components/gradcam-demo";
+import { ImageSlideshow } from "@/components/image-slideshow";
 import { ImpactMetrics } from "@/components/impact-metrics";
 import { Reveal } from "@/components/reveal";
 import { ButtonLink } from "@/components/ui/button";
+import { InteractiveTour } from "@/components/interactive-tour";
 
-const steps = [
-  {
-    title: "Upload gambar",
-    description: "Pilih foto limbah rumah tangga dengan pencahayaan cukup dan objek terlihat jelas.",
-    icon: UploadCloud,
-  },
-  {
-    title: "Analisis oleh AI",
-    description: "Model MobileViT-XS membaca pola visual dan mengembalikan probabilitas tiap kelas.",
-    icon: Microscope,
-  },
-  {
-    title: "Lihat hasil",
-    description: "Hasil menampilkan label, confidence, tingkat bahaya, regulasi, dan top 3 prediksi.",
-    icon: FileImage,
-  },
-  {
-    title: "Ikuti rekomendasi",
-    description: "Gunakan panduan penanganan awal agar limbah tidak tercampur sampah domestik.",
-    icon: ShieldCheck,
-  },
-];
+
 
 const safetyCards = [
   {
@@ -95,43 +75,7 @@ export default function Home() {
 
       <section id="sistem" className="page-band px-4 md:px-8" aria-labelledby="workflow-title">
         <div className="w-full">
-          <Reveal className="max-w-3xl">
-            <h2 id="workflow-title" className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl font-extrabold text-[var(--color-ink)]">
-              Alur Pemakaian
-            </h2>
-            <p className="mt-4 text-lg text-[var(--color-ink-soft)]">
-              Dari foto ke keputusan penanganan, dibuat cukup jelas untuk dijelaskan saat sidang.
-            </p>
-          </Reveal>
-
-          <div className="mt-12 md:mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((step, index) => {
-              const Icon = step.icon;
-              return (
-                <Reveal key={step.title} delay={index * 0.04} className="h-full">
-                  <div className="relative pt-6 h-full">
-                    {/* Overlapping Number Box */}
-                    <div className="absolute top-0 left-6 z-10 flex h-12 w-12 items-center justify-center rounded-xl bg-white font-bold text-[var(--color-ink)] shadow-[0_8px_24px_-4px_rgba(0,0,0,0.12)] ring-1 ring-gray-900/5">
-                      {(index + 1).toString().padStart(2, "0")}
-                    </div>
-                    
-                    {/* Card Container */}
-                    <article className="flex h-full flex-col rounded-2xl border border-[var(--color-rule-strong)] bg-[var(--color-surface)] px-6 pb-8 pt-10 transition-all hover:border-[var(--color-accent)] hover:shadow-md">
-                      <div className="mb-5">
-                        <Icon className="size-7 text-[var(--color-ink-soft)]" aria-hidden="true" />
-                      </div>
-                      <h3 className="font-[family-name:var(--font-display)] text-xl font-bold leading-tight text-[var(--color-ink)]">
-                        {step.title}
-                      </h3>
-                      <p className="mt-3 text-sm leading-relaxed text-[var(--color-muted)]">
-                        {step.description}
-                      </p>
-                    </article>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
+          <InteractiveTour />
         </div>
       </section>
 
@@ -142,13 +86,11 @@ export default function Home() {
           
           {/* Left: Visuals */}
           <Reveal>
-            <div className="relative rounded-3xl bg-[var(--color-surface)] border border-[var(--color-rule)] p-4 md:p-8 md:pb-10 lg:pb-8 mb-8 md:mb-16 lg:mb-0 shadow-sm">
-              <div className="rounded-2xl overflow-hidden ring-1 ring-black/5 shadow-md">
-                <GradCamDemo />
-              </div>
+            <div className="relative mb-8 md:mb-16 lg:mb-0">
+              <ImageSlideshow />
               
               {/* Floating Info Box */}
-              <div className="mt-6 md:absolute md:-bottom-8 md:left-8 md:w-[85%] rounded-2xl bg-white border border-[var(--color-rule)] p-6 shadow-xl">
+              <div className="mt-6 md:absolute md:-bottom-8 md:left-8 md:w-[85%] rounded-2xl bg-white border border-[var(--color-rule)] p-6 shadow-xl z-10">
                 <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--color-ink)] mb-2">
                   Transparansi Penuh
                 </h3>

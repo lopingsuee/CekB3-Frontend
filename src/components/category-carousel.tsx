@@ -6,10 +6,33 @@ import { animate } from "framer-motion";
 import { wasteCategories } from "@/lib/waste-data";
 
 function CategoryCard({ category }: { category: any }) {
+  const getImageForCategory = (id: string) => {
+    switch (id) {
+      case "baterai_bekas": return "/images/batre.png";
+      case "lampu_tl_cfl_neon": return "/images/bohlam.png";
+      case "kaleng_aerosol": return "/images/aerosol.png";
+      case "cat_pelarut": return "/images/cat.png";
+      case "pestisida_insektisida": return "/images/pestisida.png";
+      case "oli_bekas": return "/images/oli.png";
+      case "obat_obatan_kadaluwarsa": return "/images/obat_kapsul.png";
+      default: return null;
+    }
+  };
+
+  const imgSrc = getImageForCategory(category.id);
+
   return (
     <div className="flex flex-col rounded-2xl bg-[#fcfaf2] p-5 md:p-6 shadow-sm ring-1 ring-black/5 shrink-0 w-[280px] h-[360px] md:w-[340px] md:h-[400px]">
-      {/* Empty space for future image */}
-      <div className="w-full rounded-xl bg-black/5 h-32 mb-4 md:h-36 md:mb-6"></div>
+      {imgSrc ? (
+        <div className="w-full rounded-xl bg-white h-32 mb-4 md:h-36 md:mb-6 flex items-center justify-center overflow-hidden ring-1 ring-black/5">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={imgSrc} alt={category.label} className="w-full h-full object-contain p-2 mix-blend-multiply" />
+        </div>
+      ) : (
+        <div className="w-full rounded-xl bg-black/5 h-32 mb-4 md:h-36 md:mb-6 flex items-center justify-center">
+          <span className="text-xs text-black/30 font-medium tracking-wider uppercase">No Image</span>
+        </div>
+      )}
       
       <div className="flex items-center justify-between mb-3">
         <h3 className="font-[family-name:var(--font-display)] text-lg md:text-xl font-bold uppercase tracking-tight text-[var(--color-ink)]">

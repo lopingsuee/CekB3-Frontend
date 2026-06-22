@@ -22,8 +22,8 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
   return (
     <motion.div
       ref={ref}
-      initial={false}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 25 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 25 }}
       transition={{
         duration: reduceMotion ? 0.15 : 0.42,
         delay: reduceMotion ? 0 : delay,

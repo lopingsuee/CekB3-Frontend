@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, IBM_Plex_Sans, JetBrains_Mono } from "next/font/google";
+import { Poppins, JetBrains_Mono } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
-const display = Bricolage_Grotesque({
-  variable: "--font-display",
+const poppinsBody = Poppins({
+  variable: "--font-body",
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const body = IBM_Plex_Sans({
-  variable: "--font-body",
+const poppinsDisplay = Poppins({
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     "Frontend CEK-B3 untuk klasifikasi citra limbah B3 rumah tangga, Grad-CAM, dan rekomendasi penanganan.",
   metadataBase: new URL("https://cek-b3.vercel.app"),
   icons: {
-    icon: "/images/CekB3_logo.jpg",
+    icon: "/images/CekB3_logo.png",
   },
 };
 
@@ -44,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className={`${display.variable} ${body.variable} ${mono.variable}`}>
+    <html lang="id" className={`${poppinsDisplay.variable} ${poppinsBody.variable} ${mono.variable}`}>
       <body>
         <SiteHeader />
         {children}
