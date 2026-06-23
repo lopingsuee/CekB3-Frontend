@@ -6,13 +6,27 @@ interface DatasetInputProps {
   onSelect: (file: File, url: string) => void;
 }
 
+const sampleImages: Record<string, string> = {
+  baterai_bekas: "batre-sample.jpg",
+  lampu_tl_cfl_neon: "lampu-sample.jpg",
+  kaleng_aerosol: "aerosol-sample.jpg",
+  cat_pelarut: "cat-sample.jpg",
+  pestisida_insektisida: "insekti-sample.png",
+  oli_bekas: "oli-sample.jpg",
+  obat_obatan_kadaluwarsa: "obat-sample.jpg",
+  non_b3: "nonb3-sample.png",
+};
+
 export function DatasetInput({ onSelect }: DatasetInputProps) {
   const handleSelect = async (categoryId: string) => {
     try {
-      const res = await fetch(`/samples/${categoryId}.jpg`);
+      const filename = sampleImages[categoryId];
+      if (!filename) throw new Error("Contoh gambar tidak terdaftar");
+      const res = await fetch(`/images/sample/${filename}`);
       if (!res.ok) throw new Error("Gagal mengambil gambar contoh");
       const blob = await res.blob();
-      const file = new File([blob], `${categoryId}-sample.jpg`, { type: "image/jpeg" });
+      const mimeType = filename.endsWith(".png") ? "image/png" : "image/jpeg";
+      const file = new File([blob], filename, { type: mimeType });
       const url = URL.createObjectURL(blob);
       onSelect(file, url);
     } catch (error) {
@@ -32,7 +46,7 @@ export function DatasetInput({ onSelect }: DatasetInputProps) {
           <div className="w-full aspect-square rounded-md overflow-hidden bg-[var(--color-surface)] relative border border-[var(--color-rule-strong)] group-hover:border-[var(--color-accent)] transition-colors">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img 
-              src={`/samples/${cat.id}.jpg`} 
+              src={`/images/sample/${sampleImages[cat.id]}`} 
               alt={cat.label}
               className="w-full h-full object-cover"
               onError={(e) => {

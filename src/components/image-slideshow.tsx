@@ -25,10 +25,11 @@ export function ImageSlideshow() {
             transition={{ duration: 1, ease: "easeInOut" }}
             className="absolute inset-0 w-full h-full flex items-center justify-center bg-[#dedcd0]"
           >
-            {/* Ganti span di bawah ini dengan tag <img src="..." /> nanti */}
-            <span className="text-[var(--color-ink-soft)] text-lg font-bold tracking-widest uppercase">
-              GAMBAR 1
-            </span>
+            <img 
+              src="/images/gradcam-before.png" 
+              alt="Gambar Asli" 
+              className="absolute inset-0 w-full h-full object-cover"
+            />
           </motion.div>
         ) : (
           <motion.div
@@ -39,10 +40,11 @@ export function ImageSlideshow() {
             transition={{ duration: 1, ease: "easeInOut" }}
             className="absolute inset-0 w-full h-full flex items-center justify-center bg-[#e4e1d5]"
           >
-            {/* Ganti span di bawah ini dengan tag <img src="..." /> nanti */}
-            <span className="text-[var(--color-ink-soft)] text-lg font-bold tracking-widest uppercase">
-              GAMBAR 2
-            </span>
+            <img 
+              src="/images/gradcam-after.png" 
+              alt="Hasil Grad-CAM" 
+              className="absolute inset-0 w-full h-full object-cover"
+            />
           </motion.div>
         )}
       </AnimatePresence>
